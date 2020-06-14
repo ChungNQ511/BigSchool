@@ -17,11 +17,12 @@
                 <div class="details" style="position:absolute;    top:0;    left:70px;">
                     <span class="lecturer">
                         @course.Lecturer.Name
+                        <button class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId">Follow</button>
                     </span>
                     <span class="category">
                         @course.Category.Name
                     </span>
-                    <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?
+                    <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance" style="border-color:blueviolet;"> Going?
                     </button>
                 </div>
             </li>
@@ -46,6 +47,17 @@
                     alert("Something failed!");
                 });
             });
+            $(".js-toggle-follow").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/followings", { followeId: button.attr("data-user-id") })
+                .done(function () {
+                    button.text("Following");
+                })
+                .fail(function () {
+                    alert("Something failed");
+                })
+            }
+            )
         });
     </script>
     }
