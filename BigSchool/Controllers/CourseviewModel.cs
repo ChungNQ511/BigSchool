@@ -3,7 +3,7 @@ using BigSchool.Models;
 
 namespace BigSchool.Controllers
 {
-    internal class CourseviewModel
+    internal class CoursesviewModel
     {
         public List<Category> Categories { get; set; }
     }
