@@ -1,9 +1,12 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model BigSchool.ViewModels.CoursesViewModel
+@{
+    ViewBag.Title = "Attending";
+    Layout="~/Views/Shared/_Layout.cshtml"
 }
+<h2>Attending</h2>
 <div class="row">
     <ul class="course" style="list-style:none;">
-        @foreach(var course in Model.UpcommingCourses)
+        @foreach (var course in Model.UpcommingCourses)
         {
             <li style="position:relative;    margin-bottom:30px;">
                 <div class="date" style="text-align:center;    background-color:coral;    color:black;    width:60px;    border-radius:8px;">
@@ -19,7 +22,7 @@
                         @course.Lecturer.Name
                         @if (Model.ShowAction)
                         {
-                        <button class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId">Follow</button>
+                            <button class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId">Follow</button>
                         }
                     </span>
                     <span class="category">
@@ -27,8 +30,9 @@
                     </span>
                     @if (Model.ShowAction)
                     {
-                    <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance" style="border-color:blueviolet;"> Going?
-                    </button>
+                        <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance" style="border-color:blueviolet;">
+                            Going?
+                        </button>
                     }
                 </div>
             </li>
@@ -66,4 +70,5 @@
             )
         });
     </script>
-    }
+}
+
